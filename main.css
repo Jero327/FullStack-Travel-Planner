@@ -84,3 +84,8 @@ body {
   font-size: 14px;
   color: #999;
 }
+
+.suggestions-container {
+  display: flex;
+  justify-content: space-around;
+}
