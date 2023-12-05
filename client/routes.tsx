@@ -7,6 +7,7 @@ import HomePage from './components/HomePage.tsx'
 import Explore from './components/Explore.tsx'
 import ExploreOption from './components/ExploreOption.tsx'
 import MyTravel from './components/MyTravel.tsx'
+import TravelDetails from './components/TravelDetails.tsx'
 
 export const routes = createRoutesFromElements(
   <Route path="/" element={<AppLayout />}>
@@ -14,5 +15,6 @@ export const routes = createRoutesFromElements(
     <Route path="/plan" element={<Explore />} />
     <Route path="/explore" element={<ExploreOption />} />
     <Route path="/my-travel" element={<MyTravel />} />
+    <Route path="/my-travel/:travelId" element={<TravelDetails />} />
   </Route>
 )

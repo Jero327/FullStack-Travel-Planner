@@ -33,7 +33,7 @@ function Nav() {
           </NavButton>
         </IfNotAuthenticated>
       </NavGroup>
-      <h1>Travel 4 you!</h1>
+      <Link to="/"><h1>Travel 4 you!</h1></Link>
     </>
   )
 }
