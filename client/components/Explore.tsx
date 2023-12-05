@@ -108,46 +108,61 @@ function Explore() {
       >
         Start planning
       </button>
-      <div className='suggestions-container'>
-        <div className="mx-auto ">
-          <h2>Top place</h2>
-          {searchData
-            ?.filter((c) => c.category === 'place')
-            .map((u) => (
-              <div
-                key={u.id}
-                className="flex justify-between items-center  py-2"
-              >
-                <p key={u.id}>{u.name}</p>
-              </div>
-            ))}
+      <div className="suggestions-container">
+        <div className="mx-auto">
+          {searchData.length>1 && (
+            <div>
+              <h2>Top place</h2>
+              {searchData
+                .filter((c) => c.category === 'place')
+                .map((u) => (
+                  <div
+                    key={u.id}
+                    className="flex justify-between items-center py-2"
+                  >
+                    <p key={u.id}>{u.name}</p>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
-        <div className="mx-auto ">
-          <h2>Top restaurant</h2>
-          {searchData
-            ?.filter((c) => c.category === 'restaurant')
-            .map((u) => (
-              <div
-                key={u.id}
-                className="flex justify-between items-center  py-2"
-              >
-                <p key={u.id}>{u.name}</p>
-              </div>
-            ))}
+
+        <div className="mx-auto">
+          {searchData.length > 1 && (
+            <div>
+              <h2>Top restaurant</h2>
+              {searchData
+                .filter((c) => c.category === 'restaurant')
+                .map((u) => (
+                  <div
+                    key={u.id}
+                    className="flex justify-between items-center py-2"
+                  >
+                    <p key={u.id}>{u.name}</p>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
-        <div className="mx-auto ">
-          <h2>Top hotel</h2>
-          {searchData
-            ?.filter((c) => c.category === 'hotel')
-            .map((u) => (
-              <div
-                key={u.id}
-                className="flex justify-between items-center  py-2"
-              >
-                <p key={u.id}>{u.name}</p>
-              </div>
-            ))}
+
+        <div className="mx-auto">
+          {searchData.length > 1 && (
+            <div>
+              <h2>Top hotel</h2>
+              {searchData
+                .filter((c) => c.category === 'hotel')
+                .map((u) => (
+                  <div
+                    key={u.id}
+                    className="flex justify-between items-center py-2"
+                  >
+                    <p key={u.id}>{u.name}</p>
+                  </div>
+                ))}
+            </div>
+          )}
         </div>
+
       </div>
     </>
   )
