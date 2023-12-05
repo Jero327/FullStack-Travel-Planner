@@ -15,3 +15,13 @@ export async function addNewTravelDetail(travelDetail: TravelDetail, token: stri
     .send(travelDetail)
   return res.body
 }
+
+export async function getTravelDetail(
+  token: string
+) {
+  const res = await request
+    .get(`${baseUrl}`)
+    .set('Authorization', `Bearer ${token}`)
+    .set('Content-Type', 'application/json')
+  return res.body
+}
