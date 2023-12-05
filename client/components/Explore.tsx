@@ -3,11 +3,13 @@ import { useState } from 'react'
 import { Suggestion } from '../../models/suggestion'
 import { retriveSuggestions } from '../apis/retriveSuggestions'
 import { addNewTravelDetail } from '../apis/travelDetail'
+import { addNewItinerary } from '../apis/itinerary'
 
 function Explore() {
   const [city, setCity] = useState('')
   const [date, setDate] = useState('')
   const [searchData, setSearchData] = useState([] as Suggestion[])
+  const [myDetailId, setMyDetailId] = useState(1)
   const { user, getAccessTokenSilently } = useAuth0()
 
   const { isAuthenticated, loginWithRedirect } = useAuth0()
@@ -57,10 +59,20 @@ function Explore() {
           accessToken
         )
         console.log(newTravelDetailId)
+        setMyDetailId(newTravelDetailId)
         setCity('')
         setDate('')
       }
     }
+  }
+
+  async function handleAddSuggestion(suggestionId: number) {
+    const accessToken = await getAccessTokenSilently()
+    const newItinerary = {
+      detailId: myDetailId,
+      suggestionId: suggestionId,
+    }
+    await addNewItinerary(newItinerary, accessToken)
   }
 
   return (
@@ -121,6 +133,7 @@ function Explore() {
                     className="flex justify-between items-center py-2"
                   >
                     <p key={u.id}>{u.name}</p>
+                    <button onClick={() => handleAddSuggestion(u.id)}>Add</button>
                   </div>
                 ))}
             </div>
@@ -139,6 +152,7 @@ function Explore() {
                     className="flex justify-between items-center py-2"
                   >
                     <p key={u.id}>{u.name}</p>
+                    <button onClick={() => handleAddSuggestion(u.id)}>Add</button>
                   </div>
                 ))}
             </div>
@@ -157,6 +171,7 @@ function Explore() {
                     className="flex justify-between items-center py-2"
                   >
                     <p key={u.id}>{u.name}</p>
+                    <button onClick={() => handleAddSuggestion(u.id)}>Add</button>
                   </div>
                 ))}
             </div>
